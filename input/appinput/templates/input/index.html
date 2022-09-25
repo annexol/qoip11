@@ -1,0 +1,35 @@
+{% extends 'input/base.html' %}
+
+{% block content%}
+<div id="container">
+    <form id="myForm" method="post">
+        {% csrf_token %}
+        <table id="myTable">
+            <tr>
+                <td id="new_input">
+                    <p><label for="input1"> input_1: </label> <input type="text" name="input1" id="input1"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="enter" class="btn btn-primary" style="width:300px;height:40px"/>
+        </table>
+    </form>
+</div>
+<button id="addVar" type="button" class="btn btn-secondary" style="width:300px;height:40px">add_input</button>
+
+
+<script>
+        var varCount = 1;
+        $(function () {
+            $('#addVar').on('click', function(){
+                varCount++;
+                $node = '<p><label for="input'+varCount+'"> input_'+varCount+': </label>'
+                  + '<input type="text" name="input'+varCount+'" id="input'+varCount+'"></p>';
+                $("#new_input").append($node);
+            });
+        });
+</script>
+
+{% endblock %}
+
